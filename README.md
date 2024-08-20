@@ -1,51 +1,128 @@
-# templates/spa
+# Remix SPA with Shadcn and Radix UI
 
-This template leverages [Remix SPA Mode](https://remix.run/docs/en/main/guides/spa-mode) to build your app as a Single-Page Application using [Client Data](https://remix.run/docs/en/main/guides/client-data) for all of your data loads and mutations.
+This project is a Single Page Application (SPA) built using [Remix](https://remix.run/) and [Shadcn UI components](https://shadcn.dev/). It leverages [Radix UI](https://www.radix-ui.com/), [Tailwind CSS](https://tailwindcss.com/), and [Vite](https://vitejs.dev/) for a modern, performant, and responsive user interface.
 
-## Setup
+## Table of Contents
 
-```shellscript
-npx create-remix@latest --template remix-run/remix/templates/spa
+- [Features](#features)
+- [Installation](#installation)
+- [Scripts](#scripts)
+- [Using Shadcn Components](#using-shadcn-components)
+- [Project Structure](#project-structure)
+- [Linting and Formatting](#linting-and-formatting)
+- [Testing](#testing)
+- [License](#license)
+
+## Features
+
+- **Remix SPA:** Fast and modern web application framework.
+- **Shadcn Components:** UI components built on top of Radix UI and styled using Tailwind CSS.
+- **TypeScript:** Type-safe development with TypeScript support.
+- **Tailwind CSS:** Utility-first CSS framework for styling.
+- **Vite:** Next-generation frontend tooling for fast builds and live reloading.
+- **Husky and Lint-Staged:** Pre-commit hooks for ensuring code quality.
+- **Vitest:** Unit testing framework.
+- **Biome:** Unified linter, formatter, and code analyzer.
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/remix-spa.git
+cd remix-spa
 ```
 
-## Development
+Install dependencies:
 
-You can develop your SPA app just like you would a normal Remix app, via:
-
-```shellscript
-npm run dev
+```bash
+bun install
 ```
 
-## Production
+## Scripts
 
-When you are ready to build a production version of your app, `npm run build` will generate your assets and an `index.html` for the SPA.
+Here are the available bun scripts for the project:
 
-```shellscript
-npm run build
+- `build`: Build the production version of the app using Vite.
+- `dev`: Start the development server with live reload.
+- `preview`: Preview the built app locally.
+- `typecheck`: Type-check the project using TypeScript.
+- `format`: Format the code using Biome.
+- `lint`: Lint the codebase using Biome.
+- `test`: Run unit tests with Vitest.
+- `prepare`: Setup Husky pre-commit hooks.
+
+## Using Shadcn Components
+
+### Installing Shadcn Components[https://ui.shadcn.com/docs/components/accordion]
+
+To add Shadcn components to your project, run the following command:
+
+```bash
+bunx shadcn-ui@latest add <component-name>
 ```
 
-### Preview
+For example, to add a button component, you would run:
 
-You can preview the build locally with [vite preview](https://vitejs.dev/guide/cli#vite-preview) to serve all routes via the single `index.html` file:
-
-```shellscript
-npm run preview
+```bash
+bunx shadcn-ui@latest add button
 ```
 
-> [!IMPORTANT]
->
-> `vite preview` is not designed for use as a production server
+### Customizing Components
 
-### Deployment
+Shadcn components are styled using Tailwind CSS, which means you can easily customize them by extending your `tailwind.config.js` file. You can modify the colors, spacing, typography, and more based on your design needs.
 
-You can then serve your app from any HTTP server of your choosing. The server should be configured to serve multiple paths from a single root `/index.html` file (commonly called "SPA fallback"). Other steps may be required if the server doesn't directly support this functionality.
+### Example Usage
 
-For a simple example, you could use [sirv-cli](https://www.npmjs.com/package/sirv-cli):
+Here's an example of how you can use a Shadcn button in your Remix component:
 
-```shellscript
-npx sirv-cli build/client/ --single
+```tsx
+import { Button } from "@/components/ui/button";
+
+export default function Example() {
+  return <Button>Click me</Button>;
+}
 ```
 
-## Styling
+Ensure that your components are imported from the appropriate path as shown above.
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+## Project Structure
+
+```plaintext
+├── public/                # Static assets
+├── src/                   # Source code
+│   ├── components/        # UI components
+│   ├── routes/            # Remix routes
+│   ├── styles/            # Global styles
+│   └── utils/             # Utility functions
+│   └── constants/         # Constant Variables
+├── tailwind.config.js     # Tailwind CSS configuration
+├── remix.config.js        # Remix configuration
+├── vite.config.js         # Vite configuration
+└── package.json           # Project dependencies and scripts
+```
+
+## Linting and Formatting
+
+This project uses Biome for linting and formatting. The linting and formatting configuration ensures consistent code style throughout the codebase. Pre-commit hooks are configured with Husky to run these checks automatically.
+
+To manually run the linter and formatter, use the following commands:
+
+```bash
+bun run lint
+bun run format
+```
+
+## Testing
+
+Unit tests are written using Vitest. To run the tests, use the following command:
+
+```bash
+bun run test
+```
+
+You can also run staged tests before committing code with:
+
+```bash
+bun run test:staged
+```
