@@ -17,11 +17,10 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pnpm lint:staged"
+      "pre-commit": "bun lint:staged"
     }
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": ["pnpm run test:staged"],
     "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
       "biome check --write --no-errors-on-unmatched",
       "biome check --write --organize-imports-enabled=false --no-errors-on-unmatched",

@@ -1,7 +1,5 @@
-import {ProductsComponent} from "~/components/layout/Products";
+import { ProductsComponent } from "~/components/layout/Products";
 
 export default function Products() {
-  return (
-    <ProductsComponent/>
-  )
+  return <ProductsComponent />;
 }
