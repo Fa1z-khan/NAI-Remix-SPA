@@ -44,6 +44,9 @@ export function ProductsComponent() {
     page * PRODUCTS_PER_PAGE,
   );
 
+  const startIndex = (page - 1) * PRODUCTS_PER_PAGE + 1;
+  const endIndex = Math.min(page * PRODUCTS_PER_PAGE, totalProducts);
+
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
       <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
@@ -178,8 +181,11 @@ export function ProductsComponent() {
                 </CardContent>
                 <CardFooter className="flex justify-between">
                   <div className="text-xs text-muted-foreground">
-                    Showing <strong>1-10</strong> of <strong>32</strong>{" "}
-                    products
+                    Showing&nbsp;
+                    <strong>
+                      {startIndex}-{endIndex}
+                    </strong>
+                    &nbsp;of&nbsp;<strong>{totalProducts}</strong> products
                   </div>
                   <Pagination totalPages={totalPages} currentPage={page} />
                 </CardFooter>

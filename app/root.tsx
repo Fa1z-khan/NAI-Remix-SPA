@@ -1,6 +1,5 @@
 import {
   Links,
-  LiveReload,
   Meta,
   Outlet,
   Scripts,
@@ -22,7 +21,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Navbar />
         <main className="overflow-y-auto">{children}</main>
         <ScrollRestoration />
-        <LiveReload />
         <Scripts />
       </body>
     </html>

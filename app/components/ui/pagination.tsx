@@ -22,7 +22,8 @@ export function Pagination({
       <Button
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="text-sm text-muted-foreground disabled:opacity-50"
+        className="text-sm text-muted-foreground border rounded disabled:opacity-50"
+        variant={"ghost"}
         size={"sm"}
       >
         <ChevronLeft className="size-4" />
@@ -33,11 +34,7 @@ export function Pagination({
           // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
           key={index}
           onClick={() => handlePageChange(index + 1)}
-          className={`text-sm ${
-            currentPage === index + 1
-              ? "bg-primary text-white"
-              : "border text-muted-foreground"
-          } rounded`}
+          variant={currentPage === index + 1 ? "default" : "secondary"}
           size={"sm"}
         >
           {index + 1}
@@ -48,6 +45,7 @@ export function Pagination({
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
         className="text-sm text-muted-foreground border rounded disabled:opacity-50"
+        variant={"ghost"}
         size={"sm"}
       >
         <ChevronRight className="size-4" />
