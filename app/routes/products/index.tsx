@@ -1,4 +1,4 @@
-import { ProductsComponent } from "~/components/layout/Products";
+import { ProductsComponent } from "./Products";
 
 export default function Products() {
   return <ProductsComponent />;
